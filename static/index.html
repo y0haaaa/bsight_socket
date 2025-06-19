@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B-SiGHT Dashboard</title>
+    <link rel="stylesheet" href="./static/main.css">
+</head>
+<body>
+    <h1>B-SiGHT Online data</h1>
+    
+    <div class="container">
+        <input type="text" id="wssUrl" placeholder="WSS URL Команды 1 (wss://...)">
+        <input type="text" id="wssUrl_2" placeholder="WSS URL Команды 2 (wss://...)">
+        <button id="connectBtn">Подключиться</button>
+        <button id="disconnectBtn">Отключиться</button>
+    </div>
+    <!-- <div id="connectionInfo"></div> -->
+    
+    <div id="status" class="disconnected">Не подключено</div>
+    
+    <button id="resetMaxBtn">Сбросить MAX HR & Speed</button>
+    
+    <div class="team-container">
+        <table id="teamTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Команда</th>
+                    <th>Номер</th>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Дистанция, м</th>
+                    <th>Дистанция, км</th>
+                    <th>ВиБ, м</th>
+                    <th>Текущий ЧСС</th>
+                    <th>Макс ЧСС</th>
+                    <th>Текущая скорость 60с, км/ч</th>
+                    <th>Текущая скорость 120с, км/ч</th>
+                    <th>Текущая скорость 180с, км/ч</th>
+                    <th>Макс. скорость, км/ч</th>
+                    <th>Нагрузка</th>
+                    <th>Сброс</th>
+                </tr>
+            </thead>
+            <tbody id="teamTableBody"></tbody>
+        </table>
+    </div>
+    
+
+
+    <script src="/static/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0 auto;
+    padding: 20px;
+}
+.container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+input {
+    padding: 10px;
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    /* background-color: #45a049; */
+}
+.reset{
+    background-color: #af4c4c;
+    padding: 8px;
+    font-size: 0.7rem;
+}
+
+#disconnectBtn{
+    background-color: #af4c4c;
+}
+
+#resetMaxBtn{
+    background-color: #ccc;
+    float: right;
+    margin-bottom: 20px;
+}
+
+#status {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+.connected {
+    background-color: #dff0d8;
+    color: #3c763d;
+}
+.disconnected {
+    background-color: #f2dede;
+    color: #a94442;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: left;
+    font-size: 0.7rem;
+}
+th {
+    background-color: #f2f2f2;
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
