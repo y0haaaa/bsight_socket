@@ -1,3 +1,6 @@
+
+const BASE_PATH = "/socket"; 
+
 let socket = null;
 let teamData = {};  // Храним данные по командам в объекте
 const urlToTeamMap = new Map();
@@ -16,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function disconnectHandler() {
         try {
-            const response = await fetch('/disconnect_all', {
+            const response = await fetch(`${BASE_PATH}/disconnect_all`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -45,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('resetMaxBtn').addEventListener('click', async () => {
         try {
-            const response = await fetch('/reset_max_values', {
+            const response = await fetch(`${BASE_PATH}/reset_max_values`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -116,7 +119,7 @@ async function connectHandler() {
     if (url2) urlToTeamMap.set(url2, 'Team 2');
 
     try {
-        const response = await fetch('/set_wss_url', {
+        const response = await fetch(`${BASE_PATH}/set_wss_url`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -148,7 +151,7 @@ function initWebSocket() {
     if (socket) socket.close();
 
     const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    const wsUrl = `${protocol}//${window.location.host}/ws`;
+    const wsUrl = `${protocol}//${window.location.host}${BASE_PATH}/ws`;
 
     socket = new WebSocket(wsUrl);
 
@@ -264,7 +267,7 @@ function requestInitialData() {
 // Проверка текущего статуса серверных подключений
 async function fetchStatus() {
     try {
-        const res = await fetch('/status');
+        const res = await fetch(`${BASE_PATH}/status`);
         if (!res.ok) throw new Error('Не удалось получить статус');
 
         const data = await res.json();
@@ -317,7 +320,7 @@ function renderTable() {
         button.addEventListener('click', async () => {
             console.log(player.tag)
             try {
-                const response = await fetch('/reset_max_values_tag', {
+                const response = await fetch(`${BASE_PATH}/reset_max_values_tag`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -361,4 +364,3 @@ function updateStatus(text, className) {
         statusElement.className = className;
     }
 }
-
