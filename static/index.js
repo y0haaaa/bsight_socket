@@ -1,5 +1,4 @@
-
-const BASE_PATH = "/socket"; 
+const BASE_PATH = "/socket"; // /socket
 
 let socket = null;
 let teamData = {};  // Храним данные по командам в объекте

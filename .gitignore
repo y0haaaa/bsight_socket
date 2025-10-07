@@ -1,0 +1,40 @@
+# Системные файлы macOS
+.DS_Store
+
+# Node modules
+node_modules/
+
+# Логи
+logs/
+*.log
+
+# Кэш и временные файлы
+.cache/
+dist/
+build/
+tmp/
+
+# Python virtualenv (если есть backend)
+venv/
+__pycache__/
+
+# Конфигурация окружения
+.env
+.env.local
+.env.*
+
+# Файлы IDE
+.vscode/
+.idea/
+
+# Компилированные статические файлы
+/static/*.map
+/static/*.tmp
+
+# Локальные данные
+*.sqlite3
+*.db
+
+# OS и Editor backups
+*~
+*.swp

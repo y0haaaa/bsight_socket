@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B-SiGHT Dashboard</title>
+    <title>B-SiGHT SOCKET</title>
     <link rel="stylesheet" href="./static/main.css">
 </head>
 <body>
-    <h1>B-SiGHT Online data</h1>
+    <h1>B-SiGHT SOCKET</h1>
     
     <div class="container">
-        <input type="text" id="wssUrl" placeholder="WSS URL Команды 1 (wss://...)">
-        <input type="text" id="wssUrl_2" placeholder="WSS URL Команды 2 (wss://...)">
+        <input type="text" id="wssUrl" placeholder="WSS URL (wss://...)">
+        <input type="text" id="wssUrl_2" placeholder="WSS URL (wss://...)">
         <button id="connectBtn">Подключиться</button>
         <button id="disconnectBtn">Отключиться</button>
     </div>
-    <!-- <div id="connectionInfo"></div> -->
-    
-    <div id="status" class="disconnected">Не подключено</div>
-    
-    <button id="resetMaxBtn">Сбросить MAX HR & Speed</button>
-    
+        
+    <div class="status-container">
+        <div id="status" class="disconnected">Не подключено</div>
+        <button id="resetMaxBtn">Сбросить ЧСС & Скорость</button>
+    </div>
+
     <div class="team-container">
         <table id="teamTable">
             <thead>
@@ -30,15 +30,15 @@
                     <th>Номер</th>
                     <th>Имя</th>
                     <th>Фамилия</th>
-                    <th>Дистанция, м</th>
-                    <th>Дистанция, км</th>
+                    <th>Дист, м</th>
+                    <th>Дист, км</th>
                     <th>ВиБ, м</th>
-                    <th>Текущий ЧСС</th>
-                    <th>Макс ЧСС</th>
-                    <th>Текущая скорость 60с, км/ч</th>
-                    <th>Текущая скорость 120с, км/ч</th>
-                    <th>Текущая скорость 180с, км/ч</th>
-                    <th>Макс. скорость, км/ч</th>
+                    <th>Текущий<br>ЧСС</th>
+                    <th>Макс<br>ЧСС</th>
+                    <th>Cкорость 60с,<br>км/ч</th>
+                    <th>Cкорость 120с,<br>км/ч</th>
+                    <th>Cкорость 180с,<br>км/ч</th>
+                    <th>Макс. скорость,<br>км/ч</th>
                     <th>Нагрузка</th>
                     <th>Сброс</th>
                 </tr>
@@ -46,8 +46,6 @@
             <tbody id="teamTableBody"></tbody>
         </table>
     </div>
-    
-
 
     <script src="./static/index.js"></script>
 </body>

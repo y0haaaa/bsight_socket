@@ -1,73 +1,255 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0 auto;
-    padding: 20px;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --bg-color: rgb(21, 23, 28);
+  --panel-bg: rgb(30, 32, 40);
+  --th-bg: rgb(40, 42, 50);
+  --text-color: #e6e6e6;
+  --accent: #6EDAD5;
+  --accent2: #8b5cf6;
+  --danger: #ff4c4c;
+  --success: #4cd964;
+  --radius: 12px;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
-.container {
+
+/* Тёмный современный скроллбар */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1c1c1e; /* тёмный фон дорожки */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3d3d40, #5e5e63);
+  border-radius: 10px;
+  border: 2px solid #1c1c1e; /* создаёт эффект «вырезанного» скролла */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #5e5e63, #7f7f85);
+}
+
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #5e5e63 #1c1c1e;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    margin: 0 auto;
+    background: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+h1 {
+    width: 100%;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--accent);
     margin-bottom: 20px;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    
 }
 input {
-    padding: 10px;
-    flex-grow: 1;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  background: var(--panel-bg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 14px;
+  color: var(--text-color);
+  border-radius: var(--radius);
+  width: 260px;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
 }
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+  /* box-shadow: 0 0 10px rgba(110, 218, 213, 0.4); */
+}
+
 button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  /* background: linear-gradient(90deg, var(--accent) 0%, var(--accent2) 100%); */
+  /* background: linear-gradient(90deg, #4cd964 0%, #3ac15e 100%); */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
+/* ——— Кнопка “Подключиться” ——— */
+#connectBtn {
+  background: linear-gradient(90deg, #4cd964 0%, #3ac15e 100%);
+}
+
+
+#disconnectBtn {
+  background: linear-gradient(90deg, #ff4c4c 0%, #e63946 100%);
+}
+
+
+
 button:hover {
-    /* background-color: #45a049; */
-}
-.reset{
-    background-color: #af4c4c;
-    padding: 8px;
-    font-size: 0.7rem;
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
-#disconnectBtn{
-    background-color: #af4c4c;
+button:active {
+  transform: scale(0.97);
+  opacity: 0.9;
 }
 
-#resetMaxBtn{
-    background-color: #ccc;
-    float: right;
-    margin-bottom: 20px;
+.status-container{
+    margin: 10px 0 20px 0;
+    width: 100%;
+    gap: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #status {
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 4px;
+    /* height: 40px; */
+    padding: 10px 20px;
+    border-radius: var(--radius);
+    font-weight: 500;
+    text-align: center;
+    width: fit-content;
 }
-.connected {
-    background-color: #dff0d8;
-    color: #3c763d;
+
+#status.disconnected {
+  background: rgba(255, 76, 76, 0.1);
+  border: 1px solid var(--danger);
+  color: var(--danger);
 }
-.disconnected {
-    background-color: #f2dede;
-    color: #a94442;
+
+#status.connected {
+  background: rgba(76, 217, 100, 0.1);
+  border: 1px solid var(--success);
+  color: var(--success);
 }
-table {
+
+#resetMaxBtn {
+    height: 40px;
+    padding: 10px 20px;
+    background: linear-gradient(90deg, #ff7a7a 0%, #ff4c4c 100%);
+}
+
+
+
+.team-container {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+    overflow-x: auto;
+    background: var(--panel-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(8px);
+    /* padding: 20px; */
+    min-height: 300px;
+    max-height: 60vh;
 }
-th, td {
-    border: 1px solid #ddd;
-    padding: 5px;
-    text-align: left;
-    font-size: 0.7rem;
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--text-color);
+
 }
+
 th {
-    background-color: #f2f2f2;
+    position: sticky;
+    top: 0;
+    background: var(--th-bg);
+    text-align: left;
+    padding: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    white-space: nowrap;
 }
-tr:nth-child(even) {
-    background-color: #f9f9f9;
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  white-space: nowrap;
+}
+
+tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+  transition: background 0.2s ease;
+}
+
+button.reset{
+    padding: 10px 20px;
+    background: linear-gradient(90deg, #ff7a7a 0%, #ff4c4c 100%);
+
+}
+
+
+@media screen and (min-width: 1024px) {
+    .team-container{
+        max-height: 70vh;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .container{
+        width: 80%;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    input {
+        width: 100%;
+    }
+    .status-container{
+        flex-direction: column;
+        width: 80%;
+    }
+    #status{
+        width: 100%;
+    }
+    #resetMaxBtn {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .container{
+        width: 100%;
+    }
+    .team-container{
+        max-height: 45vh;
+    }
+    .status-container{
+        flex-direction: column;
+        width: 100%;
+    }
+
+
 }
