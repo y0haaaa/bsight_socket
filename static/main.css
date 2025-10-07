@@ -13,21 +13,21 @@
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Тёмный современный скроллбар */
+
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1c1c1e; /* тёмный фон дорожки */
+  background: #1c1c1e;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #3d3d40, #5e5e63);
   border-radius: 10px;
-  border: 2px solid #1c1c1e; /* создаёт эффект «вырезанного» скролла */
+  border: 2px solid #1c1c1e;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -101,7 +101,8 @@ button {
   font-weight: 500;
   transition: all 0.2s ease;
 }
-/* ——— Кнопка “Подключиться” ——— */
+
+
 #connectBtn {
   background: linear-gradient(90deg, #4cd964 0%, #3ac15e 100%);
 }
@@ -134,7 +135,6 @@ button:active {
 }
 
 #status {
-    /* height: 40px; */
     padding: 10px 20px;
     border-radius: var(--radius);
     font-weight: 500;
@@ -169,7 +169,6 @@ button:active {
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     backdrop-filter: blur(8px);
-    /* padding: 20px; */
     min-height: 300px;
     max-height: 60vh;
 }
