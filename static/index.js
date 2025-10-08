@@ -292,7 +292,6 @@ async function fetchStatus() {
 
 function renderTable() {
     const allPlayers = Object.values(teamData).flat();
-
     const sortedPlayers = allPlayers.sort((a, b) =>
         a.team_name.localeCompare(b.team_name)
     );
@@ -303,21 +302,43 @@ function renderTable() {
     sortedPlayers.forEach(player => {
         const row = document.createElement('tr');
 
-        // Стандартные столбцы
-        ['tag', 'team_name', 'jersey', 'first_name', 'last_name', 'distance_m', 'distance_km', 'hir', 'hr', 'max_hr', 'max_speed_60_s', 'max_speed_120_s', 'max_speed_180_s', 'max_speed', 'load'].forEach(field => {
+        const HR_z5 = 180;
+        const HR_z4 = 160;
+        const SPEED_z5 = 25;
+        const SPEED_z4 = 19; 
+
+        [
+            'tag', 'team_name', 'jersey', 'first_name', 'last_name', 
+            'distance_m', 'distance_km', 'hir', 'hr', 
+            'max_hr', 'max_speed_60_s', 'max_speed_120_s', 
+            'max_speed_180_s', 'max_speed', 'load'
+        ].forEach(field => {
             const cell = document.createElement('td');
+            const value = Number(player[field]);
             cell.textContent = player[field] ?? '-';
+
+            // Проверка зон
+            if (field === 'hr' && value > HR_z5) {
+                cell.classList.add('overdata');
+            } else if (field === 'max_speed_60_s' && value > SPEED_z5) {
+                cell.classList.add('overdata');
+            } else if (field === 'hr' && value > HR_z4) {
+                cell.classList.add('mediumdata');
+            } else if (field === 'max_speed_60_s' && value > SPEED_z4) {
+                cell.classList.add('mediumdata');
+            }
+
             row.appendChild(cell);
         });
 
-        // Кнопка сброса для конкретного игрока
+        // Кнопка сброса
         const buttonCell = document.createElement('td');
         const button = document.createElement('button');
         button.textContent = 'Сбросить';
         button.classList.add('reset');
 
         button.addEventListener('click', async () => {
-            console.log(player.tag)
+            console.log(player.tag);
             try {
                 const response = await fetch(`${BASE_PATH}/reset_max_values_tag`, {
                     method: 'POST',
@@ -348,7 +369,6 @@ function renderTable() {
 
         buttonCell.appendChild(button);
         row.appendChild(buttonCell);
-
         fragment.appendChild(row);
     });
 
