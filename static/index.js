@@ -305,7 +305,10 @@ function renderTable() {
         const HR_z5 = 180;
         const HR_z4 = 160;
         const SPEED_z5 = 25;
-        const SPEED_z4 = 19; 
+        const SPEED_z4 = 19;
+
+        const maxHR = 208;
+        const maxSpeed = 32;
 
         [
             'tag', 'team_name', 'jersey', 'first_name', 'last_name', 
@@ -318,15 +321,20 @@ function renderTable() {
             cell.textContent = player[field] ?? '-';
 
             // Проверка зон
-            if (field === 'hr' && value > HR_z5) {
+            if ((field === 'hr' && value) > HR_z5) {
                 cell.classList.add('overdata');
+            } else if ((field === 'hr' && value) > HR_z4) {
+                cell.classList.add('mediumdata');
             } else if (field === 'max_speed_60_s' && value > SPEED_z5) {
                 cell.classList.add('overdata');
-            } else if (field === 'hr' && value > HR_z4) {
-                cell.classList.add('mediumdata');
             } else if (field === 'max_speed_60_s' && value > SPEED_z4) {
                 cell.classList.add('mediumdata');
-            }
+            } else if (field === 'max_hr' && value > maxHR) {
+                cell.classList.add('maxdata');
+            } else if (field === 'max_speed' && value > maxSpeed) {
+                cell.classList.add('maxdata');
+            } 
+
 
             row.appendChild(cell);
         });

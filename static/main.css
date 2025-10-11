@@ -278,6 +278,9 @@ button.reset{
 .mediumdata{
     color: var(--yellow);
 }
+.maxdata{
+    color: var(--accent);
+}
 
 
 @media screen and (max-width: 768px) {
