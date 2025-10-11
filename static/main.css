@@ -60,13 +60,18 @@ body {
     padding: 40px 20px;
 }
 
-h1 {
+.logo {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
     width: 100%;
     font-size: 2rem;
     font-weight: 600;
     color: var(--accent);
     margin-bottom: 20px;
 }
+
 
 .container {
     width: 100%;
@@ -302,8 +307,8 @@ button.reset{
     #resetMaxBtn {
         width: 100%;
     }
-    h1{
-        text-align: center;
+    .logo{
+        justify-content: center;
     }
 }
 
